@@ -25,4 +25,12 @@
      (filter even?)
      (reduce +))))
 
-  
+(defn largest-prime-factor-of
+  ([] (largest-prime-factor-of 600851475143))
+  ([num]
+   (let [max-prime-factor (int (math/sqrt num))]
+     (->>
+       (take-while #(< % max-prime-factor) lazy/primes)
+       (reverse)
+       (filter #(zero? (rem num %)))
+       (first)))))
