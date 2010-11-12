@@ -50,3 +50,8 @@
         sum-of-squares (reduce + (map square one-hundred))
         square-of-sums (square (reduce + one-hundred))]
     (- square-of-sums sum-of-squares)))
+
+(defn prime-at
+  ([] (prime-at 10001))
+  ([n]
+   (nth lazy/primes (dec n))))
