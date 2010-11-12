@@ -44,4 +44,9 @@
        divisible? (apply divides-all (range 11 19))]
    (first (filter #(divisible? %) candidates))))
 
-
+(defn diff-sum-of-squares-and-square-of-sums []
+  (let [square (fn [x] (* x x))
+        one-hundred (range 1 101)
+        sum-of-squares (reduce + (map square one-hundred))
+        square-of-sums (square (reduce + one-hundred))]
+    (- square-of-sums sum-of-squares)))
