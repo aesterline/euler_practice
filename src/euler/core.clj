@@ -9,6 +9,10 @@
   (fn [dividend]
     (boolean (some #(divides? dividend %) divisors))))
 
+(defn divides-all [& divisors]
+  (fn [dividend]
+    (every? #(divides? dividend %) divisors)))
+
 (defn sum-of-numbers-divisible-by-3-or-5
   ([] (sum-of-numbers-divisible-by-3-or-5 1000))
   ([max]
@@ -34,3 +38,10 @@
        (reverse)
        (filter #(zero? (rem num %)))
        (first)))))
+
+(defn smallest-divisible-by-all []
+ (let [candidates (iterate #(+ % (* 19 20)) (* 19 20))
+       divisible? (apply divides-all (range 11 19))]
+   (first (filter #(divisible? %) candidates))))
+
+

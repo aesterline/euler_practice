@@ -19,3 +19,10 @@
     (it "should return false when not divisible by either 3 or 5"
         (not (evenly-divisible? 14)))))
 
+(describe divides-all
+  (given [all (divides-all 3 5)]
+    (it "should return true when divisible by all"
+        (all 15))
+    (it "should return false when divisible by only one"
+        (not (all 10)))))
+
