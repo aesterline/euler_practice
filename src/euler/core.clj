@@ -55,3 +55,11 @@
   ([] (prime-at 10001))
   ([n]
    (nth lazy/primes (dec n))))
+
+(defn sum-of-primes-below
+  ([] (sum-of-primes-below 2000000))
+  ([max]
+   (->>
+     lazy/primes
+     (take-while #(< % max))
+     (reduce +))))
