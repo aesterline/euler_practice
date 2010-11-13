@@ -26,3 +26,9 @@
     (it "should return false when divisible by only one"
         (not (all 10)))))
 
+(describe palindrome?
+  (it "should be true for any number that is the same forward and backward"
+      (palindrome? 1001))
+  (it "should return false for any number that is not the same forward and backward"
+      (not (palindrome? 2020))))
+

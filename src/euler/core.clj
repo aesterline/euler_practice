@@ -13,6 +13,10 @@
   (fn [dividend]
     (every? #(divides? dividend %) divisors)))
 
+(defn palindrome? [num]
+  (let [word (seq (str num))]
+    (= word (reverse word))))
+
 (defn sum-of-numbers-divisible-by-3-or-5
   ([] (sum-of-numbers-divisible-by-3-or-5 1000))
   ([max]
@@ -63,3 +67,10 @@
      lazy/primes
      (take-while #(< % max))
      (reduce +))))
+
+(defn largest-palindrome []
+  (->> (for [n1 (range 100 1000) 
+             n2 (range 100 n1)] (* n1 n2))
+       (filter palindrome?)
+       (apply max)))
+
