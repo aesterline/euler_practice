@@ -1,6 +1,7 @@
 (ns euler.core
   (:require [clojure.contrib.lazy-seqs :as lazy]
-            [clojure.contrib.math :as math]))
+            [clojure.contrib.math :as math]
+            [clojure.string :as string]))
 
 (defn divides? [dividend divisor]
   (zero? (rem dividend divisor)))
@@ -74,3 +75,11 @@
        (filter palindrome?)
        (apply max)))
 
+(def number-string
+  (string/trim-newline (slurp "data/problem8.txt")))
+
+(defn euler-8 []
+  (let [number-sequence (map #(Character/getNumericValue %) (seq number-string))]
+    (->> (partition 5 1 number-sequence)
+         (map #(reduce * %))
+         (apply max))))
